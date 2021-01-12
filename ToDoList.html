@@ -1,0 +1,137 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style type="text/css">
+		 *{
+		 padding:0px;
+		 margin:0px;
+		 box-sizing:border-box;
+		 }
+		 body{
+		 font-size:16px;
+		 font-family:verdana;
+		 background:#99ccff;
+		 } 
+		 .container{
+		 color:black;
+		 box-sizing:border-box;
+		 max-height:80%;;
+		 width:80%;
+		 max-width:700px;
+		 position:absolute;
+		 top:30%;
+		 left:50%;
+		 transform:translate(-50%,-50%);
+		 background:white;
+		 
+		 font-weight:300;
+		 overflow:scroll;
+		 border-radius:2%;
+		 }	
+		 .container h1{
+		 color:#99ccff ;
+		 margin:10px;
+		 }
+		 .Bg{
+		 background:#333399 ;
+		 padding:8px;
+		 
+		 }
+		 #item{
+		 padding:6px;
+		 margin:5px;
+		 font-size:90%;
+		 }
+		 #add{
+		 padding:7px;
+		 background:white;
+		 border:1px solid white;
+		 border-radius:2%;
+		 }
+		 #date{
+		 margin-top:20px;
+		 color:white;
+		 }
+		 #myList{
+		 margin:10px;
+		 }
+		 #myList Cont{
+		 padding:5px;
+		 margin:7px;
+		 }
+		 @media only screen and (min-width:768px) {
+		 
+		 body{
+		 font-size:22px;
+		} 
+		 
+		 }
+		 @media only screen and (min-width:920px) {
+		 
+		 body{
+		 font-size:24px;
+		 }
+		 }
+		</style>
+				
+	</head>
+	<body>
+		<div class="container">
+		<div class="Bg">
+			<div id="date"></div>
+			<center><h1>To-Do List</h1></center>
+			<div id="inputField">
+			<center><form method="post">
+				<input type="text" id="item" placeholder="Title..">
+				<input type="button" value="Add" id="add">
+			</form></center>
+			</div>
+			</div>
+			<div id="myList"></div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			var date=new Date();
+			document.getElementById('date').innerHTML= "Today's Date : " + date.getDate() + "/" + date.getMonth() +1 + "/" + date.getFullYear();
+			var Item=document.getElementById('item');
+			var Container=document.getElementById('myList');
+			var Add=document.getElementById('add');
+			Add.addEventListener('click',()=>{
+					var Cont=document.createElement('div');
+					var toDoItem=document.createElement('span');
+					var remove=document.createElement('button');
+					var txt = document.createTextNode("Remove");
+					remove.appendChild(txt);
+					toDoItem.style.marginRight='60px';
+					toDoItem.innerHTML=Item.value;
+					Cont.appendChild(toDoItem);
+					Cont.appendChild(remove);
+					//style 
+					Cont.style.padding='5px';
+					Cont.style.margin='7px';
+					remove.style.float='right';
+					remove.style.boxSixing='border-box';
+					remove.style.padding="3px";
+					remove.style.background='white';
+					remove.style.border='1px solid white' ;
+					remove.style.textDecoration='underline';
+					//JScode
+					Container.appendChild(Cont);
+					remove.addEventListener('click',()=>{
+							Container.removeChild(Cont);
+					
+					});
+					Cont.addEventListener('click',()=>{
+							toDoItem.style.textDecoration='line-through';
+							Cont.style.background="#6666cc";
+							
+					});
+					Item.value=" ";
+			});
+				
+		</script>
+	</body>
+</html>
+		
